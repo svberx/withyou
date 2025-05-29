@@ -8,7 +8,7 @@
     "dev": "nodemon server.js",
     "start": "node server.js",
     "prepare": "prisma generate",
-    "postinstall": "prisma db push --accept-data-loss || echo 'DB push failed, continuing...'"
+    "deploy": "prisma generate && prisma db push"
   },
   "keywords": [],
   "author": "",
