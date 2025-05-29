@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `user` ADD COLUMN `age` INTEGER NOT NULL DEFAULT 25,
+    ADD COLUMN `gender` VARCHAR(191) NOT NULL DEFAULT 'unspecified';
