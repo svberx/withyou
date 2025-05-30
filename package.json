@@ -29,6 +29,7 @@
     "mysql2": "^3.14.1",
     "node-schedule": "^2.1.1",
     "nodemailer": "^7.0.3",
+    "openai": "^5.0.1",
     "path": "^0.12.7",
     "pdf-poppler": "^0.2.1",
     "pdf2img": "^0.5.0",

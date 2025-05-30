@@ -5,6 +5,40 @@ import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
+// Get User by ID Route
+router.get('/user/:id', async (req, res) => {
+    const { id } = req.params;
+    
+    // Convert string ID to number
+    const userId = parseInt(id);
+    
+    // Validate if ID is a valid number
+    if (isNaN(userId)) {
+        return res.status(400).json({ message: 'Invalid user ID' });
+    }
+    
+    try {
+        const user = await prisma.user.findUnique({
+            where: { id: userId },
+            select: { 
+                id: true, 
+                email: true, 
+                name: true, 
+                age: true, 
+                gender: true 
+                // Don't return password
+            }
+        });
+        
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+});
 // Sign Up Route
 router.post('/signup', async (req, res) => {
     const { email, password, name, age, gender } = req.body;
